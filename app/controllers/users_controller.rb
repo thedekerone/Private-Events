@@ -13,13 +13,8 @@ class UsersController < ApplicationController
         end
     end
 
-    def signin(id)
-        @user = User.find(id)
-        session[:user_id]=@user.id
-    end
-
     def show
-        
+        @events = User.find(params[:id]).created_events        
     end
 
     private

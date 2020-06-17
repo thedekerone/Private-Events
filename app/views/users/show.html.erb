@@ -1,8 +1,13 @@
 <%@events.each do |t|%>
-    <h1>
-        <%= t.name %>
-    </h1>
-    <span>
-        <%= t.event_date %>
-    </span>
-<%end%>
+<h1>
+  <%= t.name %>
+</h1>
+<span>
+  <%= t.description %>
+</span>
+<br><br>
+<span>
+  <%= t.event_date %>
+</span>
+<%end%><br>
+<%= link_to  "Create Event", new_event_path %>

@@ -1,11 +1,23 @@
 class EventsController < ApplicationController
+
+  scope :shit, -> { where("LENGTH(name) > ?", 2) }
+
+  def self.upcomming
+    self.where("event_date > ?", Date.today)
+  end
+
+  def self.previews
+    self.where("event_date < ?", Date.today)
+  end
+  
   def new
     @event = Event.new    
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.creator_id  = session[:user_id]
+    @user = User.find(session[:user_id])
+    @event = @user.created_events.build(event_params)
+
     if @event.save
       redirect_to user_path(@event.creator)
     else
@@ -14,8 +26,29 @@ class EventsController < ApplicationController
   end
 
   def index
+    @upcomming = Event.with_upcomming
+    @previews = Event.with_previews
   end
   
+  def show
+    @event = Event.find(params[:id])
+    @attend = @event.attendee
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    @add_attend = EventAttending.new
+    @add_attend.attended_event_id = @event.id
+    @add_attend.event_attendee_id = session[:user_id]
+    if(@add_attend.save)
+      redirect_to events_path
+    else
+      redirect_to root_url
+    end
+    
+  end
+
+
   private
   def event_params
     params.require(:event).permit(:name, :event_date, :description)

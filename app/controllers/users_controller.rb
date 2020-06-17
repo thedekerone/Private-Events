@@ -7,14 +7,15 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if(@user.save)
-            render json: @user
+            redirect_to login_path
         else
             render "new"
         end
     end
 
     def show
-        @events = User.find(params[:id]).created_events        
+        @events = User.find(params[:id]).created_events  
+        @attend = User.find(params[:id]).attended_event    
     end
 
     private

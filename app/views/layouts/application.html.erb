@@ -10,11 +10,26 @@
   </head>
 
   <body>
-    <% if(session[:user_id]) %>
-      <%= User.find(session[:user_id]).username%> is logged in
-    <% end %>
-    <%= yield %>
 
-    <%= link_to "log out", logout_path%>
+    <%= yield %>
+    <br>
+      <br>
+
+    <% if(session[:user_id]) %>
+      <strong><%= User.find(session[:user_id]).username%></strong> is logged in
+      <br>
+      <br>
+
+      <%= link_to "log out", logout_path%>
+      <br>
+      <br>
+      <%= link_to  "Create Event", new_event_path %>
+      <br>
+      <br>
+      <%= link_to  "Go to events", events_path %>
+    <% else %>
+      <%= link_to  "Register", new_user_path   %>
+    <% end %>
+    
   </body>
 </html>

@@ -1,13 +1,9 @@
-<%@events.each do |t|%>
-<h1>
-  <%= t.name %>
-</h1>
-<span>
-  <%= t.description %>
-</span>
-<br><br>
-<span>
-  <%= t.event_date %>
-</span>
-<%end%><br>
-<%= link_to  "Create Event", new_event_path %>
+<h2>Events created</h2>
+<%= render "shared/show_event" %>
+
+<h3>Events attending</h3>
+<ul>
+<% @attend.each do |t| %>
+    <li><%=link_to t.name, event_path(t) %></li> 
+<% end %>
+</ul>

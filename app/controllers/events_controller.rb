@@ -1,14 +1,5 @@
 class EventsController < ApplicationController
-
-  scope :shit, -> { where("LENGTH(name) > ?", 2) }
-
-  def self.upcomming
-    self.where("event_date > ?", Date.today)
-  end
-
-  def self.previews
-    self.where("event_date < ?", Date.today)
-  end
+  
   
   def new
     @event = Event.new    

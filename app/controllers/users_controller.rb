@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @events = User.find(params[:id]).created_events  
+        @event = User.find(params[:id]).created_events  
         @attend = User.find(params[:id]).attended_event    
     end
 

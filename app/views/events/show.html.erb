@@ -1,9 +1,9 @@
 <h2>
     <%= @event.name %>
 </h2>
-
+<h4>Atendees</h4>
 <% @attend.each do |t| %>
     <div>
-        <%= t.username %>
+        <%= "- " + t.username %>
     </div>
 <% end %>

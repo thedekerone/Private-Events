@@ -17,8 +17,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @upcomming = Event.with_upcomming
-    @previews = Event.with_previews
+    @user = User.find(session[:user_id])
+    @event = Event.all
   end
   
   def show

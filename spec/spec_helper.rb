@@ -18,27 +18,27 @@ RSpec.configure do |config|
 end
 
 def sign_up_user(username)
-  visit "/users/new"
+  visit '/users/new'
 
-  fill_in "user[username]", with: username
-  click_on "Create"
+  fill_in 'user[username]', with: username
+  click_on 'Create'
 end
 
 def login_user(username)
-  visit "/login"
-  fill_in "session[username]", with: username
-  click_on "Login"
+  visit '/login'
+  fill_in 'session[username]', with: username
+  click_on 'Login'
 end
 
 def create_event(title, description, event_date = nil)
-  visit "/events/new"
+  visit '/events/new'
 
-  fill_in "event[title]", with: title
-  fill_in "event[description]", with: description
-  fill_in "event[event_date]", with: event_date if event_date
-  click_on "Create"
+  fill_in 'event[title]', with: title
+  fill_in 'event[description]', with: description
+  fill_in 'event[event_date]', with: event_date if event_date
+  click_on 'Create'
 end
 
 def logout_user
-  visit "/logout"
+  visit '/logout'
 end

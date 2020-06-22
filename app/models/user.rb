@@ -3,5 +3,5 @@ class User < ApplicationRecord
   has_many :event_attending, foreign_key: 'event_attendee_id'
   has_many :attended_event, through: :event_attending
 
-  validates :username, uniqueness: true, presence: true
+  validates :username, uniqueness: true, presence: true, length: { minimum: 3, maximum: 30 }
 end

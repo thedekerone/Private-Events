@@ -16,3 +16,29 @@ RSpec.configure do |config|
   Kernel.srand config.seed
   # config.profile_examples = 10
 end
+
+def sign_up_user(username)
+  visit "/users/new"
+
+  fill_in "user[username]", with: username
+  click_on "Create"
+end
+
+def login_user(username)
+  visit "/login"
+  fill_in "session[username]", with: username
+  click_on "Login"
+end
+
+def create_event(title, description, event_date = nil)
+  visit "/events/new"
+
+  fill_in "event[title]", with: title
+  fill_in "event[description]", with: description
+  fill_in "event[event_date]", with: event_date if event_date
+  click_on "Create"
+end
+
+def logout_user
+  visit "/logout"
+end

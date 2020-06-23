@@ -26,6 +26,21 @@ Private Event is a lightweight event management system. After signing up, a user
 
 - Ruby on Rails 5.2.3
 
+## Aplication Preview
+
+### Signup
+![Signup](./screenshots/signup.png)
+
+### Login
+![Login](./screenshots/login.png)
+
+### Create Event
+![Create event](./screenshots/create_event.png)
+
+### All Events
+![All events](./screenshots/all_events.png)
+
+
 ## Authors
 
 👤 **Hemant soni**

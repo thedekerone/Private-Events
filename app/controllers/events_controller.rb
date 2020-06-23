@@ -16,11 +16,13 @@ class EventsController < ApplicationController
 
   def index
     @user = User.find(session[:user_id])
-    @event = Event.all
+    @upcomming_events = Event.upcomming
+    @past_events = Event.previews
   end
 
   def show
     @event = Event.find(params[:id])
+
     @attend = @event.attendee
   end
 

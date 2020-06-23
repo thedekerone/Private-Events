@@ -1,11 +1,6 @@
 class Event < ApplicationRecord
-  def self.upcomming
-    where('event_date > ?', Date.today)
-  end
-
-  def self.previews
-    where('event_date < ?', Date.today)
-  end
+  scope :upcomming, -> { where('event_date > ?', Date.today) }
+  scope :previews, -> { where('event_date < ?', Date.today) }
 
   belongs_to :creator, class_name: 'User'
   has_many :event_attending, foreign_key: 'attended_event_id'

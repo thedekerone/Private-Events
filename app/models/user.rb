@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   def already_attending?(event)
     attended_event.include? event
   end

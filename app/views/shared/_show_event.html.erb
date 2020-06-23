@@ -15,9 +15,7 @@
 <br>
 <strong>author: <%= t.creator.username %></strong>
 
-<% if(User.user_can_attend(session[:user_id], t)) %>
-  <%= link_to "attend this event", edit_event_path(t.id) %>
-<% end %>
+<%= attendance_button(t) %>
 
 <hr>
 

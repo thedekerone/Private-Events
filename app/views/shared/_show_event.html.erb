@@ -1,0 +1,46 @@
+<h2>UPCOMING EVENTS</h2>
+
+<%@upcomming_events.each do |t|%>
+<h3>
+   Event: <%= link_to t.name, event_path(t) %>
+</h3>
+<span>
+  Description: <%= t.description %>
+</span>
+<br><br>
+<span>
+  date: <%= t.event_date %>
+</span>
+<br>
+<br>
+<strong>author: <%= t.creator.username %></strong>
+
+<%= attendance_button(t) %>
+
+<hr>
+
+<%end%><br>
+
+<h2>PREVIEWSLY ATTENDED EVENTS</h2>
+<%@past_events.each do |t|%>
+<h3>
+   Event: <%= link_to t.name, event_path(t) %>
+</h3>
+<span>
+  Description: <%= t.description %>
+</span>
+<br><br>
+<span>
+  date: <%= t.event_date %>
+</span>
+<br>
+<br>
+<strong>author: <%= t.creator.username %></strong>
+
+<% if(session[:user_id] && !t.attendee.include?(User.find(session[:user_id])) && t.creator.id != session[:user_id] ) %>
+  <%= link_to "attend this event", edit_event_path(t.id) %>
+<% end %>
+
+<hr>
+
+<%end%><br>

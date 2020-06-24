@@ -1,0 +1,9 @@
+<h2>Events created</h2>
+<%= render "shared/show_event" %>
+
+<h3>Events attending</h3>
+<ul>
+<% @attend.each do |t| %>
+    <li><%=link_to t.name, event_path(t) %></li> 
+<% end %>
+</ul>
